@@ -10,6 +10,7 @@ class User(models.Model):
 class Room(models.Model):
     name = models.CharField(max_length=128)
     online = models.ManyToManyField(to=User, blank=True)
+    question = models.CharField(max_length=512)
 
     def get_online_count(self):
         return self.online.count()

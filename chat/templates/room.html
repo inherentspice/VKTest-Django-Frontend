@@ -26,10 +26,21 @@
         <p style="color:azure; font-size: 30px; margin: 10px">Interrogation</p>
         {% load static %} <img src="{% static 'images/interrogation.jpg' %}" alt="" style="height:300px;border-radius: 50%; border: 10px solid seagreen"/>
       </div>
-        <div style="height:1px; width:300px; border:seagreen">
+        <div style="height:1px; width:300px;">
           <!-- <h1 style="text-align:center"> AI </h1> -->
-          {% load static %} <img src="{% static 'images/ai_avatar.jpg' %}" style="height:200px; float: left; padding-top: 60px;" alt="">
-          <p style="line-height: 2.0; font-size:16px; padding-top: 80px; color: seagreen;">You are an <b>AI</b>. Click the send button and a message will be generated for you.</p>
+          {% if user.role == True %}
+            {% load static %} <img src="{% static 'images/ai_avatar.jpg' %}" style="height:200px; float: left; padding-top: 60px;" alt="">
+            <p style="line-height: 2.0; font-size:16px; padding-top: 80px; color: seagreen;">You are an <b>AI</b>. Click the send button and a message will be generated for you.</p>
+          {% else %}
+            {% load static %} <img src="{% static 'images/human_avatar.jpg' %}" style="height:180px; float: left; padding-top: 60px;" alt="">
+            <p style="line-height: 2.0; font-size:16px; padding-top: 80px; color: seagreen;">You are a <b>human</b>. Answer the question below, then click the send button. Your question is:
+              <br><br></br>
+               <b>{{ room.question }}</b>
+            </br>
+          </p>
+          {% endif %}
+
+
         </div>
 
         <div class="container mt-3 p-5">
@@ -40,7 +51,7 @@
                         <textarea class="form-control" id="chatLog" readonly></textarea>
                     </div>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="chatMessageInput" placeholder="Hi enter your chat message">
+                      <input type="text" class="form-control" id="chatMessageInput" placeholder= "Write your answer here...">
                         <div class="input-group-append">
                             <button class="btn btn-success" id="chatMessageSend" type="button">Send</button>
                         </div>

@@ -133,3 +133,5 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+print(BASE_DIR)

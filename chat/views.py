@@ -11,7 +11,15 @@ def index_view(request):
 
 
 def room_view(request, room_name, user_name):
-    chat_room, created = Room.objects.get_or_create(name=room_name)
+    room_query = Room.objects.filter(name=room_name)
+    if room_query.exists():
+        chat_room = Room.objects.get(name=room_name)
+    else:
+        question_url = "https://vktest-kr575za6oa-uw.a.run.app/question"
+        question_response = requests.get(question_url).json()['question']
+        chat_room = Room.objects.create(name=room_name, question=question_response)
+
+
     url = "https://vktest-kr575za6oa-uw.a.run.app/role"
     role = requests.get(url).json()['role']
     user = User.objects.create(username=user_name, role=role)
