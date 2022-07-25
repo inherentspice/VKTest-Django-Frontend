@@ -17,6 +17,7 @@ class ChatConsumer(WebsocketConsumer):
         self.user = None
         self.username = None
         self.role = None
+        self.question = None
 
 
     def connect(self):
@@ -29,6 +30,7 @@ class ChatConsumer(WebsocketConsumer):
         response = requests.get(url).json()['role']
         self.user, create = User.objects.get_or_create(username=self.username, role=response)
         self.role = self.user.role
+        self.question = self.room.question
 
         # connection has to be accepted
         self.accept()
@@ -61,7 +63,7 @@ class ChatConsumer(WebsocketConsumer):
         message = text_data_json['message']
         if self.role:
             url = "https://vktest-kr575za6oa-uw.a.run.app/response?"
-            payload = {'question': message}
+            payload = {'question': self.question}
             message = requests.get(url, params=payload).json()['response']
 
         async_to_sync(self.channel_layer.group_send)(
