@@ -12,27 +12,34 @@
             }
         </style>
     </head>
-    <body style="margin:0;">
-      <div style="background-color:seagreen; height:280px; padding-top:40px; text-align:center;">
+    <body style="margin:0; padding:0; color:black; background-color: black;">
+      <div style="height:280px; padding-top:40px; text-align:center;">
         <h1 style="color:azure; font-size: 100px; margin: 10px;">Voight-Kampff Test</h1>
-        <p style="color:azure; font-size: 30px; margin: 10px">Home</p>
 
-        <div style="height:600px; margin:100px">
-          {% load static %} <img src="{% static 'images/home.jpg' %}" alt="" style="height:600px;float:left;">
-
-          <p style="line-height: 2.0; font-size:20px;">
-            Voight-Kampff Test is a game of social detection.
-            <br></br>
+        <div style="height:600px; margin:100px;">
+          <p style="line-height: 2.0; font-size:18px; height: 320px; width:550px; float:left; border-radius: 5%; margin-left:600px; padding: 40px;font-family:Verdana, Geneva, Tahoma, sans-serif; background-color: white; color: black">
+            Voight-Kampff Test is a game of social detection.<br>
             Players are assigned a role: human or AI.
-            <br></br>
+            <br>
             Humans answer questions and try to root out party members that aren't human.
-            <br></br>
-            AI have their answers written by a generative AI model, and must convince the others they wrote the answer.
-            <br></br>
+            <br>
+            AI have their answers written by an AI, and must convince the others they wrote the answer.
+            <br>
+            <!-- {% load static %} <img src="{% static 'images/home.jpg' %}" alt="" style="height:300px; padding-top:50px"> -->
+
           </p>
         </div>
 
 
       </div>
+      <div>
+        <button type="button" id="toChat" style="width: 150px; height: 100px; border:20px dashed black; background-color: white;"><b>Play</b></button><br>
+        <button type="button" id="toInstructions" style="width: 150px; height: 100px; border:20px dashed black; background-color: white;"><b>Further Instructions</b></button><br>
+        <button type="button" id="toDonation" style="width: 150px; height: 100px; border:20px dashed black; background-color: white;"><b>Don't Click This</b></button>
+
+
+
+      </div>
+      <script src="{% static 'home.js' %}"></script>
     </body>
 </html>

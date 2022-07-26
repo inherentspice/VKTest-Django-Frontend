@@ -61,10 +61,12 @@ class ChatConsumer(WebsocketConsumer):
     def receive(self, text_data=None, bytes_data=None):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
+        print(self.role)
         if self.role:
             url = "https://vktest-kr575za6oa-uw.a.run.app/response?"
             payload = {'question': self.question}
             message = requests.get(url, params=payload).json()['response']
+            print(message)
 
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
