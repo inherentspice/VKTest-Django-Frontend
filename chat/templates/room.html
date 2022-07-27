@@ -20,34 +20,48 @@
             }
         </style>
     </head>
-    <body style="margin:0;">
-      <div style="background-color:seagreen; height:480px; padding-top:40px; text-align:center">
-        <h1 style="color:azure; font-size: 100px; margin: 10px;">Voight-Kampff Test</h1>
-        <p style="color:azure; font-size: 30px; margin: 10px">Interrogation</p>
-        {% load static %} <img src="{% static 'images/interrogation.jpg' %}" alt="" style="height:300px;border-radius: 50%; border: 10px solid seagreen"/>
+    <body style="margin:0; padding:0; color:black; background-color: black;">
+      <div style="height:300px; padding-top:40px; padding-bottom:40px; text-align:center">
+        <h1 style="color:azure; font-size: 100px; margin: 40px;">Voight-Kampff Test</h1>
+        <p style="color:azure; font-size: 30px; margin: 40px">Interrogation</p>
       </div>
-        <div style="height:1px; width:300px;">
-          <!-- <h1 style="text-align:center"> AI </h1> -->
-          {% if user.role == True %}
-            {% load static %} <img src="{% static 'images/ai_avatar.jpg' %}" style="height:200px; float: left; padding-top: 60px;" alt="">
-            <p style="line-height: 2.0; font-size:16px; padding-top: 80px; color: seagreen;">You are an <b>AI</b>. Click the send button and a message will be generated for you.</p>
+
+        <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px; border: 5px solid white;">
+            {% if user.role == True %}
+            {% load static %} <img src="{% static 'images/ai_avatar.jpg' %}" style="height:220px; float: left;" alt="">
+              <h1 style="line-height: 2.0; color: black; text-align: center; background-color: white;"><b>AI</b></h2>
+                <p style="background-color:white">Calm your circuits.</p>
+                <p style="background-color:white">Type anything in the box. Click send.</p>
+                <p style="background-color:white">Don't let on that you are what you are.</p>
+
+
           {% else %}
-            {% load static %} <img src="{% static 'images/human_avatar.jpg' %}" style="height:180px; float: left; padding-top: 60px;" alt="">
-            <p style="line-height: 2.0; font-size:16px; padding-top: 80px; color: seagreen;">You are a <b>human</b>. Answer the question below, then click the send button. Your question is:
-              <br><br></br>
+            {% load static %} <img src="{% static 'images/human_avatar.jpg' %}" style="height:180px; float: left" alt="">
+              <h1 style="line-height: 2.0; color:black; text-align: center; background-color: white;"><b>Human</b></h2>
+                <p style="background-color:white">You are guts and bone.</p>
+                <p style="background-color:white">Just answer the questions.</p>
+                <p style="background-color:white">Figure out who is not human.</p>
+                <br>
                <b>{{ room.question }}</b>
             </br>
           </p>
           {% endif %}
+          </div>
+          <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px;"></div>
+          <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px;"></div>
+          <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px; border: 5px solid white;">
+            <h1 style="color:white; text-align: center;">QUESTION</h1>
+            <br>
+            <p style="color:white; text-align: center; font-size: 30px;"><b>{{ room.question }}</b></p>
 
+            </div>
 
-        </div>
 
         <div class="container mt-3 p-5">
             <div class="row">
                 <div class="col-12 col-md-8">
                     <div class="mb-2">
-                        <label for="chatLog"><b>Room:</b> {{ room.name }} <b>User:</b> {{ user.username }}</label>
+                        <label for="chatLog" style="color:white"><b>Room:</b> {{ room.name }} <b>User:</b> {{ user.username }}</label>
                         <textarea class="form-control" id="chatLog" readonly></textarea>
                     </div>
                     <div class="input-group">
@@ -58,11 +72,12 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-2">
-                    <label for="onlineUsers"><b>Players</b></label>
+                    <label for="onlineUsers" style="color:white"><b>Players</b></label>
                     <select multiple class="form-control" id="onlineUsersSelector">
                     </select>
                 </div>
             </div>
+
             {{ room.name|json_script:"roomName" }}
             {{ user.username|json_script:"userName" }}
 
