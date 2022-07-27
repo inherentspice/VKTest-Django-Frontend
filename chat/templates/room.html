@@ -28,7 +28,7 @@
 
         <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px; border: 5px solid white;">
             {% if user.role == True %}
-            {% load static %} <img src="{% static 'images/ai_avatar.jpg' %}" style="height:220px; float: left;" alt="">
+            {% load static %} <img src="{% static 'images/ai_robot.jpg' %}" style="height:240px; float: left;" alt="">
               <h1 style="line-height: 2.0; color: black; text-align: center; background-color: white;"><b>AI</b></h2>
                 <p style="background-color:white">Calm your circuits.</p>
                 <p style="background-color:white">Type anything in the box. Click send.</p>
@@ -41,10 +41,7 @@
                 <p style="background-color:white">You are guts and bone.</p>
                 <p style="background-color:white">Just answer the questions.</p>
                 <p style="background-color:white">Figure out who is not human.</p>
-                <br>
-               <b>{{ room.question }}</b>
-            </br>
-          </p>
+
           {% endif %}
           </div>
           <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px;"></div>
