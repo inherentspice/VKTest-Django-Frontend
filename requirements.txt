@@ -1,4 +1,4 @@
-django_heroku==1.1.2
+django-on-heroku==1.1.2
 django==3.8.12
 channels==3.0.5
 channels-redis==3.4.0
