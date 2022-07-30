@@ -4,3 +4,4 @@ channels==3.0.5
 channels-redis==3.4.0
 requests==2.27.1
 asgiref==3.5.2
+gunicorn==20.1.0
