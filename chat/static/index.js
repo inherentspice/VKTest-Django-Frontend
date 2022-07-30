@@ -15,7 +15,9 @@ document.querySelector("#roomInput").onkeyup = function(e) {
 // redirect to '/room/<roomInput>/'
 document.querySelector("#roomConnect").onclick = function() {
     let roomName = document.querySelector("#roomInput").value;
+    console.log(roomName)
     let userName = document.querySelector("#nameInput").value;
+    console.log(userName)
     window.location.pathname = "chat/" + roomName + "/" + userName;
 }
 
