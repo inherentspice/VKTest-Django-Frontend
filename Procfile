@@ -1,3 +1,3 @@
 release: python manage.py migrate
-web: gunicorn core.asgi:application --port $PORT --bind 0.0.0.0
+web: gunicorn core.asgi:application
 worker: python manage.py runworker channel_layer
