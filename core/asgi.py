@@ -9,10 +9,10 @@ django.setup()
 from channels.routing import ProtocolTypeRouter, URLRouter, get_default_application
 import chat.routing
 
-application = get_default_application()
-# application = ProtocolTypeRouter({
-#   'http': get_asgi_application(),
-#   'websocket': URLRouter(
-#             chat.routing.websocket_urlpatterns
-#         ),
-# })
+# application = get_default_application()
+application = ProtocolTypeRouter({
+  'http': get_asgi_application(),
+  'websocket': URLRouter(
+            chat.routing.websocket_urlpatterns
+        ),
+})
