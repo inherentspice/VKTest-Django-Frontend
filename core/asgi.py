@@ -1,12 +1,13 @@
 import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+
 import django
+django.setup()
+
 # from django.core.asgi import get_asgi_application
 
 from channels.routing import ProtocolTypeRouter, URLRouter, get_default_application
 import chat.routing
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
-django.setup()
 
 application = get_default_application()
 # application = ProtocolTypeRouter({
