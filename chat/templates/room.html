@@ -23,10 +23,11 @@
     <body style="margin:0; padding:0; color:black; background-color: black;">
       <div style="height:300px; padding-top:40px; padding-bottom:40px; text-align:center">
         <h1 style="color:azure; font-size: 100px; margin: 40px;">Voight-Kampff Test</h1>
-        <p style="color:azure; font-size: 30px; margin: 40px">Interrogation</p>
+        <!-- <p style="color:azure; font-size: 30px; margin: 40px">Interrogation</p> -->
       </div>
+      <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px"></div>
 
-        <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px; border: 5px solid white;">
+      <div style="float:left; width: 21%; padding: 20px; margin:20px; height: 300px; border: 5px solid white;">
             {% if user.role == True %}
             {% load static %} <img src="{% static 'images/ai_robot.jpg' %}" style="height:240px; float: left;" alt="">
               <h1 style="line-height: 2.0; color: black; text-align: center; background-color: white;"><b>AI</b></h2>
@@ -36,25 +37,30 @@
 
 
           {% else %}
-            {% load static %} <img src="{% static 'images/human_avatar.jpg' %}" style="height:180px; float: left" alt="">
+            {% load static %} <img src="{% static 'images/human.jpg' %}" style="height:240px; float: left" alt="">
               <h1 style="line-height: 2.0; color:black; text-align: center; background-color: white;"><b>Human</b></h2>
                 <p style="background-color:white">You are guts and bone.</p>
-                <p style="background-color:white">Just answer the questions.</p>
+                <p style="background-color:white">Just answer the questions. Click send.</p>
                 <p style="background-color:white">Figure out who is not human.</p>
 
           {% endif %}
           </div>
-          <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px;"></div>
-          <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px;"></div>
-          <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px; border: 5px solid white;">
-            <h1 style="color:white; text-align: center;">QUESTION</h1>
-            <br>
-            <p style="color:white; text-align: center; font-size: 30px;"><b>{{ room.question }}</b></p>
+      <div style="float: left; width: 3%; padding: 20px; margin:20px; height: 300px"></div>
 
-            </div>
+      <div style="float:left; width: 21%; padding: 20px; margin:20px; height: 300px; border: 10px solid white; background-color: black; text-align: center;">
+        <h1 style="color: white; text-align: center;">QUESTION</h1>
+          <br>
+            <p style="color: white; text-align: center; font-size: 24px;"><b>{{ room.question }}</b></p>
+              <div class="input-group-append">
+                <button type="button" class="btn btn-success" style="background-color:white; color:black; border: 20px dashed black" id="nextRound"> Next Round</button>
+              </div>
+        </div>
+      <div style="float: left; width: 10%; padding: 20px; margin:20px; height: 300px"></div>
+
+      <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px"></div>
 
 
-        <div class="container mt-3 p-5">
+      <div class="container mt-3 p-5">
             <div class="row">
                 <div class="col-12 col-md-8">
                     <div class="mb-2">
@@ -64,7 +70,7 @@
                     <div class="input-group">
                       <input type="text" class="form-control" id="chatMessageInput" placeholder= "Write your answer here...">
                         <div class="input-group-append">
-                            <button class="btn btn-success" id="chatMessageSend" type="button">Send</button>
+                            <button class="btn btn-success" id="chatMessageSend" type="button" style="background-color: white; color:black">Send</button>
                         </div>
                     </div>
                 </div>
