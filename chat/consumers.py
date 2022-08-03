@@ -26,12 +26,9 @@ class ChatConsumer(WebsocketConsumer):
         self.room = Room.objects.get(name=self.room_name)
         self.username = self.scope['url_route']['kwargs']['user_name']
         self.role = self.scope['url_route']['kwargs']['role']
-        if self.role % 2 == 0:
-            self.role = True
-        else:
-            self.role = False
         User.objects.filter(username=self.username).delete()
-        self.user, create = User.objects.get_or_create(username=self.username, role=self.role)
+        self.user, create = User.objects.get_or_create(username=self.username)
+
         self.question = self.room.question
 
         # connection has to be accepted
@@ -64,7 +61,7 @@ class ChatConsumer(WebsocketConsumer):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
         print(self.role)
-        if self.role:
+        if int(self.role) % 2 == 0:
             url = "https://vktest-kr575za6oa-uw.a.run.app/response?"
             payload = {'question': self.question}
             message = requests.get(url, params=payload).json()['response']
