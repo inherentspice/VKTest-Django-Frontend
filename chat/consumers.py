@@ -25,15 +25,13 @@ class ChatConsumer(WebsocketConsumer):
         self.room_group_name = f'chat_{self.room_name}'
         self.room = Room.objects.get(name=self.room_name)
         self.username = self.scope['url_route']['kwargs']['user_name']
-        # user = User.objects.filter(username=self.username)
-        # if user.exists():
-        #     temp_user = User.objects.get(username=self.username)
-        #     self.role = temp_user.role
-        # else:
-        #     self.role = True
-        # User.objects.filter(username=self.username).delete()
-        self.user = User.objects.get(username=self.username)
-        self.role = self.user.role
+        self.role = self.scope['url_route']['kwargs']['role']
+        if self.role % 2 == 0:
+            self.role = True
+        else:
+            self.role = False
+        User.objects.filter(username=self.username).delete()
+        self.user, create = User.objects.get_or_create(username=self.username, role=self.role)
         self.question = self.room.question
 
         # connection has to be accepted
