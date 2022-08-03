@@ -56,7 +56,7 @@
               <p style="font-size:25px; padding-left: 40px; word-spacing: 50px">
                 <a href="{% url 'home' %}" style="color: white;  text-decoration:none; border:20px dashed black">home</li>
                 <a href="{% url 'instructions' %}" style="color: white;  text-decoration:none">instructions</li>
-                <a href="{% url 'chat' %}" style="color:white;  text-decoration:none;">rooms</li>
+                <a href="{% url 'chat' %}" style="color:white;  text-decoration:none;">rooms</li></a>
               </p>
             </div>
           <div style="position:fixed; left:0%; top: 30%; bottom: 0%; width: 100px; height: 100%; background-color:black">
@@ -72,11 +72,13 @@
               <br>
                 <p style="color: white; text-align: center; font-size: 24px;"><b>{{ room.question }}</b></p>
                   <div class="input-group-append">
-                    <button type="button" class="btn btn-success" style="background-color:white; color:black; border: 20px dashed black" id="nextRound"> Next Round</button>
+                    <button type="button" class="btn btn-success" style="background-color:white; color:black; border: 20px dashed black" id="nextQuestion"> Next Question</button>
                   </div>
             </div>
             {{ room.name|json_script:"roomName" }}
             {{ user.username|json_script:"userName" }}
+            {{ user.role|json_script:"userRole"}}
+            {{ room.question|json_script:"oldQuestion"}}
 
         </div>
         <script src="{% static 'room.js' %}"></script>

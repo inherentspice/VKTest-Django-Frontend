@@ -2,11 +2,28 @@ console.log("Sanity check from room.js.");
 
 const roomName = JSON.parse(document.getElementById('roomName').textContent);
 const userName = JSON.parse(document.getElementById('userName').textContent);
+var userRole = JSON.parse(document.getElementById('userRole').textContent);
+var oldQuestion = JSON.parse(document.getElementById('oldQuestion').textContent);
+
 
 let chatLog = document.querySelector("#chatLog");
 let chatMessageInput = document.querySelector("#chatMessageInput");
 let chatMessageSend = document.querySelector("#chatMessageSend");
 let onlineUsersSelector = document.querySelector("#onlineUsersSelector");
+
+document.getElementById("nextQuestion").onclick = function() {
+  console.log(userRole)
+  let regex = /\?/g;
+  let result = oldQuestion.replace(regex, "");
+
+  if (userRole) {
+    let Role = 22222
+    window.location.pathname = "chat/" + roomName + "/" + userName + "/" + result + "/" + Role;
+  } else {
+    let Role = 11111
+    window.location.pathname = "chat/" + roomName + "/" + userName + "/" + result + "/" + Role;
+  }
+}
 
 // adds a new option to 'onlineUsersSelector'
 function onlineUsersSelectorAdd(value) {
@@ -46,7 +63,8 @@ chatMessageSend.onclick = function() {
 let chatSocket = null;
 
 function connect() {
-    chatSocket = new WebSocket("wss://" + window.location.host + "/wss/chat/" + roomName + "/" + userName + "/");
+    chatSocket = new WebSocket("ws://" + window.location.host + "/wss/chat/" + roomName + "/" + userName + "/");
+    console.log(chatSocket)
 
     chatSocket.onopen = function(e) {
         console.log("Successfully connected to the WebSocket.");
@@ -93,6 +111,7 @@ function connect() {
 
     chatSocket.onerror = function(err) {
         console.log("WebSocket encountered an error: " + err.message);
+        console.log(err)
         console.log("Closing the socket.");
         chatSocket.close();
     }
