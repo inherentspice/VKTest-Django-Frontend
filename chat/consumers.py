@@ -25,10 +25,9 @@ class ChatConsumer(WebsocketConsumer):
         self.room_group_name = f'chat_{self.room_name}'
         self.room = Room.objects.get(name=self.room_name)
         self.username = self.scope['url_route']['kwargs']['user_name']
-        User.objects.filter(username=self.username).delete()
-        url = "https://vktest-kr575za6oa-uw.a.run.app/role"
-        response = requests.get(url).json()['role']
-        self.user, create = User.objects.get_or_create(username=self.username, role=response)
+        self.role = self.scope['url_route']['kwargs']['role']
+        User.objects.filter(username=self.username, role=self.role).delete()
+        self.user, create = User.objects.get_or_create(username=self.username)
         self.role = self.user.role
         self.question = self.room.question
 
