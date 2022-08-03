@@ -64,7 +64,7 @@ let chatSocket = null;
 
 function connect() {
     var pathArray = window.location.pathname.split('/');
-    var page = pathArray[3]
+    var page = pathArray[4]
 
     chatSocket = new WebSocket("wss://" + window.location.host + "/wss/chat/" + roomName + "/" + userName + "/" + page + "/");
     console.log(chatSocket)
