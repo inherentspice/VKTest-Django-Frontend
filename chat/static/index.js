@@ -26,5 +26,6 @@ document.querySelector("#roomConnect").onclick = function() {
 document.querySelector("#roomSelect").onchange = function() {
     let roomName = document.querySelector("#roomSelect").value.split(" (")[0];
     let userName = document.querySelector("#nameInput").value;
-    window.location.pathname = "chat/" + roomName + "/" + userName;
+    let role = Math.floor(Math.random() * 10) + 1;
+    window.location.pathname = "chat/" + roomName + "/" + userName + "/" + role;
 }
