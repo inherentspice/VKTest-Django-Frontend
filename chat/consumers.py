@@ -27,7 +27,9 @@ class ChatConsumer(WebsocketConsumer):
         self.username = self.scope['url_route']['kwargs']['user_name']
         user = User.objects.filter(username=self.username)
         if user.exists():
-            self.role = user.role
+            temp_user = User.objects.get(username=self.username)
+            self.role = temp_user.role
+
         User.objects.filter(username=self.username).delete()
         self.user, create = User.objects.get_or_create(username=self.username)
         self.question = self.room.question
