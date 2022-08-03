@@ -23,41 +23,14 @@
     <body style="margin:0; padding:0; color:black; background-color: black;">
       <div style="height:300px; padding-top:40px; padding-bottom:40px; text-align:center">
         <h1 style="color:azure; font-size: 100px; margin: 40px;">Voight-Kampff Test</h1>
-        <!-- <p style="color:azure; font-size: 30px; margin: 40px">Interrogation</p> -->
       </div>
-      <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px"></div>
-
-      <div style="float:left; width: 21%; padding: 20px; margin:20px; height: 300px; border: 5px solid white;">
-            {% if user.role == True %}
-            {% load static %} <img src="{% static 'images/ai_robot.jpg' %}" style="height:240px; float: left;" alt="">
-              <h1 style="line-height: 2.0; color: black; text-align: center; background-color: white;"><b>AI</b></h2>
-                <p style="background-color:white">Calm your circuits.</p>
-                <p style="background-color:white">Type anything in the box. Click send.</p>
-                <p style="background-color:white">Don't let on that you are what you are.</p>
-
-
-          {% else %}
-            {% load static %} <img src="{% static 'images/human.jpg' %}" style="height:240px; float: left" alt="">
-              <h1 style="line-height: 2.0; color:black; text-align: center; background-color: white;"><b>Human</b></h2>
-                <p style="background-color:white">You are guts and bone.</p>
-                <p style="background-color:white">Just answer the questions. Click send.</p>
-                <p style="background-color:white">Figure out who is not human.</p>
-
-          {% endif %}
-          </div>
-      <div style="float: left; width: 3%; padding: 20px; margin:20px; height: 300px"></div>
-
-      <div style="float:left; width: 21%; padding: 20px; margin:20px; height: 300px; border: 10px solid white; background-color: black; text-align: center;">
-        <h1 style="color: white; text-align: center;">QUESTION</h1>
-          <br>
-            <p style="color: white; text-align: center; font-size: 24px;"><b>{{ room.question }}</b></p>
-              <div class="input-group-append">
-                <button type="button" class="btn btn-success" style="background-color:white; color:black; border: 20px dashed black" id="nextRound"> Next Round</button>
-              </div>
-        </div>
-      <div style="float: left; width: 10%; padding: 20px; margin:20px; height: 300px"></div>
-
-      <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px"></div>
+      <div style="width:95%; height:300px; padding: 20px; margin:20px;">
+        <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px;"></div>
+        <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px;"></div>
+        <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px;"></div>
+        <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px;"></div>
+        <div style="float: left; width: 21%; padding: 20px; margin:20px; height: 300px;"></div>
+      </div>
 
       <div class="container mt-3 p-5">
             <div class="row">
@@ -86,7 +59,22 @@
                 <a href="{% url 'chat' %}" style="color:white;  text-decoration:none;">rooms</li>
               </p>
             </div>
+          <div style="position:fixed; left:0%; top: 30%; bottom: 0%; width: 100px; height: 100%; background-color:black">
+            {% if user.role == True %}
+              {% load static %} <img src="{% static 'images/ai_instructions.png' %}" style="height: 35%; float: left;" alt="">
+            {% else %}
+              {% load static %} <img src="{% static 'images/human_instructions.png' %}" style="height:35%; float: left" alt="">
+            {% endif %}
 
+          </div>
+          <div style="position:fixed; right:0%; top:30%; float:right; width: 21%; padding: 20px; margin:20px; height: 300px; border: 10px solid white; background-color: black; text-align: center;">
+            <h1 style="color: white; text-align: center;">QUESTION</h1>
+              <br>
+                <p style="color: white; text-align: center; font-size: 24px;"><b>{{ room.question }}</b></p>
+                  <div class="input-group-append">
+                    <button type="button" class="btn btn-success" style="background-color:white; color:black; border: 20px dashed black" id="nextRound"> Next Round</button>
+                  </div>
+            </div>
             {{ room.name|json_script:"roomName" }}
             {{ user.username|json_script:"userName" }}
 
