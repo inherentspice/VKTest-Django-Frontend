@@ -63,7 +63,7 @@ chatMessageSend.onclick = function() {
 let chatSocket = null;
 
 function connect() {
-    chatSocket = new WebSocket("ws://" + window.location.host + "/wss/chat/" + roomName + "/" + userName + "/");
+    chatSocket = new WebSocket("wss://" + window.location.host + "/wss/chat/" + roomName + "/" + userName + "/");
     console.log(chatSocket)
 
     chatSocket.onopen = function(e) {
