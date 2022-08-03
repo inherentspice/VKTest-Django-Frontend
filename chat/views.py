@@ -32,7 +32,7 @@ def room_view(request, room_name, user_name, role):
         'user': user,
     })
 
-def question_view(request, room_name, user_name, old_question, role):
+def question_view(request, room_name, user_name, role, old_question):
     old_question += '?'
     room_query = Room.objects.filter(name=room_name, question = old_question)
     if room_query.exists():

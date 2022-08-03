@@ -18,10 +18,10 @@ document.getElementById("nextQuestion").onclick = function() {
 
   if (userRole) {
     let Role = 22222
-    window.location.pathname = "chat/" + roomName + "/" + userName + "/" + result + "/" + Role;
+    window.location.pathname = "chat/" + roomName + "/" + userName + "/" + Role + "/" + result;
   } else {
     let Role = 11111
-    window.location.pathname = "chat/" + roomName + "/" + userName + "/" + result + "/" + Role;
+    window.location.pathname = "chat/" + roomName + "/" + userName + "/" + Role + "/" + result;
   }
 }
 
@@ -63,7 +63,10 @@ chatMessageSend.onclick = function() {
 let chatSocket = null;
 
 function connect() {
-    chatSocket = new WebSocket("wss://" + window.location.host + "/wss/chat/" + roomName + "/" + userName + "/");
+    var pathArray = window.location.pathname.split('/');
+    var page = pathArray[3]
+
+    chatSocket = new WebSocket("wss://" + window.location.host + "/wss/chat/" + roomName + "/" + userName + "/" + page + "/");
     console.log(chatSocket)
 
     chatSocket.onopen = function(e) {
