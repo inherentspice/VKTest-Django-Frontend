@@ -32,7 +32,6 @@ document.getElementById("getResults").onclick = function() {
   } else {
     let Role = 19
     window.location.pathname = "chat/" + roomName + "/" + userName + "/" + Role + "/" + 'results';
-
   }
 }
 // adds a new option to 'onlineUsersSelector'
