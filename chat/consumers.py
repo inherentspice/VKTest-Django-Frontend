@@ -60,9 +60,9 @@ class ChatConsumer(WebsocketConsumer):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
         if int(self.role) == 42 or int(self.role) == 19:
-            self.results == True
+            self.results = True
         else:
-            self.results == False
+            self.results = False
 
         if self.results==False:
             if int(self.role) % 2 == 0:
