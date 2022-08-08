@@ -1,0 +1,63 @@
+.div-banner {
+  height: 300px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.heading-banner {
+  color: white;
+  font-size: 100px;
+  margin: 40px;
+}
+
+.links-banner {
+  font-size: 25px;
+  padding-left: 40px;
+  word-spacing: 50px;
+}
+
+.links-banner-specifications {
+  color: white;
+  text-decoration: none;
+  border: 20px;
+}
+
+.result-instructions {
+  width: 20%;
+  height: 200px;
+  background-color: black;
+  border: 5px solid white;
+  text-align: center;
+  position: absolute;
+  left: 85%;
+  top: 50%;
+  transform: translate(-85%, -50%);
+}
+
+.result-heading {
+  font-size: 30px;
+  color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  .heading-banner {
+    display: none;
+  }
+  .links-banner {
+    font-size: 18px;
+    padding-left: 10px;
+  }
+  .result-instructions {
+    height: 100px;
+    width: 50%;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -20%);
+    padding: 5px
+  }
+  .result-heading {
+    font-size: 18px;
+    }
+
+}
