@@ -5,7 +5,3 @@ document.querySelector("#toChat").onclick = function() {
 document.querySelector("#toInstructions").onclick = function() {
   window.location.pathname = "instructions/"
 }
-
-document.querySelector("#toDonation").onclick = function() {
-  window.location.pathname = "donations/"
-}
