@@ -81,8 +81,8 @@
 }
 
 .question-button {
-  background-color: mediumseagreen;
-  color: white;
+  background-color: white;
+  color: black;
   border: 10px dashed black;
   position: absolute;
   right: 100%;
@@ -91,13 +91,33 @@
 }
 
 .results-button {
-  background-color: mediumvioletred;
+  background-color: black;
   color: white;
-  border: 10px dashed black;
+  border: 10px dashed white;
   position: absolute;
   left: 100%;
   top: 73%;
   transform: translate(-100%, 47%);
+}
+
+.instructions-div {
+  float: left;
+  width: 45%;
+  padding: 40px;
+  padding-left: 70px;
+  padding-right: 70px;
+  height: 750px;
+  margin: 30px;
+  margin-right: 30px;
+  margin-bottom: 70;
+  background-color: white;
+}
+
+.instructions-text {
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: white;
+  color: black;
 }
 @media only screen and (max-width: 768px) {
   .heading-banner {
@@ -166,6 +186,20 @@
     top: 47%;
     transform: translate(100%, 47%);
     padding: 20px;
+    font-size: 12px;
+  }
+  .instructions-image {
+    display: none;
+  }
+  .instructions-div {
+    width: 85%;
+    padding: 10px;
+    position: absolute;
+    top: 40%;
+    transform: translate(0%, -40%);
+    height: 550px;
+  }
+  .instructions-text {
     font-size: 12px;
   }
 }
