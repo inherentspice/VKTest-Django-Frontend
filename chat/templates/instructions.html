@@ -1,39 +1,53 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>VKT Room Instructions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-        {% load static %} <link rel="shortcut icon" type="image/jpg" href="{% static 'images/favicon.jpg.ico' %}"/>
+        <link rel="shortcut icon" type="image/jpg" href="{% static 'images/favicon.jpg.ico' %}"/>
     </head>
     <body style="margin:0; padding:0; color:black; background-color: black;">
-      <div style="height:280px; padding-top:40px; text-align:center;">
-        <h1 style="color:azure; font-size: 100px; margin: 10px;">Voight-Kampff Test</h1>
-        <p style="color:azure; font-size: 30px; margin: 40px">Further Instructions</p>
-        </div>
-      <div style="float:right; width:45%; padding: 40px; padding-left: 70px; padding-right: 70px; height: 450px; margin: 30px; margin-right: 30px; margin-bottom: 70px; background-color: black; line-height: white;">
-          {% load static %} <img src="{% static 'images/ai_battle.jpg' %}" alt="" style="height:400px; padding-top:50px">
-          </div>
-      <div style="float:right; width:45%; padding: 40px; padding-left: 70px; padding-right: 70px; height: 450px; margin: 30px; margin-right: 30px; margin-bottom: 70px; background-color: white; line-height: white;">
-          <p style="font-size: large; font-family:Verdana, Geneva, Tahoma, sans-serif; background-color: white; color: black;">
-            1. Players are assigned a role: human or AI.
+      <div class="div-banner">
+        <h1 class="heading-banner">Voight-Kampff Test</h1>
+        <p class="links-banner">
+          <a href="{% url 'home' %}" class="links-banner-specifications">home</li>
+          <a href="{% url 'instructions' %}" target="_blank" class="links-banner-specifications">instructions</li>
+          <a href="{% url 'chat' %}" class="links-banner-specifications">rooms</li></a>
+        </p>
+      </div>
+      <div class="instructions-div">
+          <p class="instructions-text">
+            1. Players are assigned a role: human or AI. The role will be displayed on the righthand side of the screen.
             <br>
             <br>
-            2. Humans answer questions.
+            2. Humans answer questions. The questions will be on the lefthand side of the screen.
             <br>
             <br>
-            3. AI have their answers written by an AI.
+            3. AI have their answers written by an AI. Quickly type anything into the chat and click send. It will take a few moments for the AI to compose your answer.
             <br>
             <br>
-            4. Players will have time after they submit their answers to question each other and vote on who to eliminate.
+            4. After everyone has submitted their answers, take some time to discuss your answers.
             <br>
             <br>
             5. AI players try to pass as human.
             <br>
             <br>
             6. Humans use their meat-brains to root out the imposters.
+            <br>
+            <br>
+            7. When you are ready, take a vote on each player. If half of the group agree they are an AI, that player is eliminated.
+            <br>
+            <br>
+            8. If you want to do another round, everyone click on the Next Question button underneath the question. You will be taken to another page.
+            <br>
+            <br>
+            9. If your party is finished, click the End Game button to reveal everyones true role.
           </p>
         </div>
-        <div style="float:left; width:45%; padding: 40px; padding-left: 70px; padding-right: 70px; height: 450px; margin: 30px; margin-right: 30px; margin-bottom: 70px; background-color: black; line-height: white;">
-          {% load static %} <img src="{% static 'images/ai_battle.jpg' %}" alt="" style="height:300px; padding-top:50px">
+        <div style="float:right; width:45%; padding: 40px; padding-left: 70px; padding-right: 70px; height: 750px; margin: 30px; margin-right: 30px; margin-bottom: 70px; background-color: black; line-height: white;">
+          <img src="{% static 'images/ai_battle.jpg' %}" class="instructions-image" alt="" style="height:750px; padding-top:50px">
           </div>

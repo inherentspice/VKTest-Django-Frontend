@@ -18,6 +18,7 @@ class ChatConsumer(WebsocketConsumer):
         self.username = None
         self.role = None
         self.question = None
+        self.results = None
 
 
     def connect(self):
@@ -28,9 +29,7 @@ class ChatConsumer(WebsocketConsumer):
         self.role = self.scope['url_route']['kwargs']['role']
         User.objects.filter(username=self.username).delete()
         self.user, create = User.objects.get_or_create(username=self.username)
-
         self.question = self.room.question
-
         # connection has to be accepted
         self.accept()
 
@@ -60,21 +59,40 @@ class ChatConsumer(WebsocketConsumer):
     def receive(self, text_data=None, bytes_data=None):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
-        print(self.role)
-        if int(self.role) % 2 == 0:
-            url = "https://vktest-kr575za6oa-uw.a.run.app/response?"
-            payload = {'question': self.question}
-            message = requests.get(url, params=payload).json()['response']
-            print(message)
+        if int(self.role) == 42 or int(self.role) == 19:
+            self.results = True
+        else:
+            self.results = False
 
-        async_to_sync(self.channel_layer.group_send)(
-            self.room_group_name,
-            {
-                'type': 'chat_message',
-                'user': self.username,
-                'message': message,
-            }
-        )
+        if self.results==False:
+            if int(self.role) % 2 == 0:
+                url = "https://vktest-kr575za6oa-uw.a.run.app/response?"
+                payload = {'question': self.question}
+                message = requests.get(url, params=payload).json()['response']
+                print(message)
+
+            async_to_sync(self.channel_layer.group_send)(
+                self.room_group_name,
+                {
+                    'type': 'chat_message',
+                    'user': self.username,
+                    'message': message,
+                }
+            )
+        else:
+            if int(self.role) % 2 == 0:
+                message = 'is an AI'
+            else:
+                message = 'is Human'
+
+            async_to_sync(self.channel_layer.group_send)(
+                self.room_group_name,
+                {
+                    'type': 'chat_message',
+                    'user': self.username,
+                    'message': message,
+                }
+            )
         Message.objects.create(user=self.user, room=self.room, content=message)
 
     def chat_message(self, event):

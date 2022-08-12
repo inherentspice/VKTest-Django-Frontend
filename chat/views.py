@@ -54,3 +54,17 @@ def question_view(request, room_name, user_name, role, old_question):
         'room': chat_room,
         'user': user,
     })
+
+def get_results(request, room_name, user_name, role):
+    chat_room = Room.objects.get(name=room_name)
+    if role % 2 == 0:
+        role = True
+    else:
+        role = False
+
+    user = User.objects.create(username=user_name, role=role)
+
+    return render(request, 'results.html', {
+        'room': chat_room,
+        'user': user,
+    })
