@@ -161,6 +161,17 @@
   transform: translate(-29.9%, -50%);
 }
 
+.introduction-button-1:hover {
+  color: yellowgreen;
+}
+
+.introduction-button-2:hover {
+  color: magenta;
+}
+
+.links-banner-specifications:hover {
+  color:yellowgreen;
+}
 .mobile-banner {
   display: none;
 }
