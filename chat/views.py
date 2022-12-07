@@ -5,7 +5,7 @@ from chat.models import Room, User
 
 
 def index_view(request):
-    return render(request, 'index.html', {
+    return render(request, 'roomselection.html', {
         'rooms': Room.objects.all(),
         'users': User.objects.all(),
     })

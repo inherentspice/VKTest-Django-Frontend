@@ -1,26 +1,41 @@
-.div-banner {
-  height: 300px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  text-align: center;
-}
-
-.heading-banner {
+body {
+  margin:0;
+  padding:0;
   color: white;
-  font-size: 100px;
-  margin: 40px;
+  background-color: black;
 }
 
-.links-banner {
-  font-size: 25px;
-  padding-left: 40px;
-  word-spacing: 50px;
+/* header */
+.banner-cont {
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  color: black;
+}
+
+.banner-title>h1 {
+  font-size: 4rem;
+}
+
+.navigation-cont {
+  gap: 1.25rem;
+  display: flex;
+  font-size: 2rem;
 }
 
 .links-banner-specifications {
   color: white;
   text-decoration: none;
   border: 20px;
+  background-color:rgb(0, 0, 0);
+  padding: 0.25rem;
+}
+
+.links-banner-specifications:hover {
+  color: rgb(39, 241, 174);
 }
 
 .result-instructions {
@@ -169,17 +184,6 @@
   color: magenta;
 }
 
-.links-banner-specifications:hover {
-  color:yellowgreen;
-}
-.mobile-banner {
-  display: none;
-}
-
-.mobile-div-banner {
-  display: none;
-}
-
 @media only screen and (max-width: 768px) {
   .heading-banner {
     display: none;
@@ -280,16 +284,5 @@
     top: 90%;
     left: 80%;
     transform: translate(-80%, -60%);
-  }
-  .mobile-banner {
-    color: white;
-    font-size: 10px;
-    display: contents;
-  }
-  .mobile-div-banner {
-    height: 100px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
   }
 }
