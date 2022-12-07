@@ -1,4 +1,4 @@
-console.log("Sanity check from index.js.");
+console.log("Sanity check from roomselection.js.");
 
 // focus 'roomInput' when user opens the page
 document.querySelector("#roomInput").focus();
