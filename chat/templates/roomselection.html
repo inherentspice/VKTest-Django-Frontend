@@ -17,42 +17,41 @@
             }
         </style>
     </head>
-    <body style="margin:0; padding:0; color:black; background-color: black;">
-      <div style="height:480px; padding-top:40px; text-align:center">
-        <h1 style="color:azure; font-size: 100px; margin: 10px;">Voight-Kampff Test</h1>
-        <p class="links-banner">
-          <a href="{% url 'home' %}" class="links-banner-specifications">home</li>
-          <a href="{% url 'instructions' %}" target="_blank" class="links-banner-specifications">instructions</li>
-          <a href="{% url 'chat' %}" class="links-banner-specifications">rooms</li></a>
-        </p>
-        <div class="container mt-3 p-5">
-            <br></br>
-            <div class="row">
-                <div class="col-12 col-md-8">
-                    <div class="mb-2">
-                        <label for="roomInput" style="color:azure">Enter a room name:</label>
-                        <input type="text" class="form-control" id="roomInput" placeholder="Room name">
-                        <small id="roomInputHelp" class="form-text" style="color: azure;">If the room doesn't exist, it will be created.</small>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <label for="nameInput" style="color:azure">Enter your username for the game:</label>
-                        <input type="text" class="form-control" id="nameInput" placeholder="User name">
-                    </div>
-                    <button type="button" id="roomConnect" class="btn btn-success" style="background-color:white; color: black;">Connect</button>
-                </div>
-                <div class="col-12 col-md-4">
-                    <label for="roomSelect" style="color:azure">Active rooms</label>
-                    <select multiple class="form-control" id="roomSelect">
-                        {% for room in rooms %}
-                            <option>{{ room }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-            </div>
+    <body class="room-selection">
+      <div class="banner-cont">
+        <div class="banner-title">
+          <h1>Voight-Kampff Test</h1>
         </div>
+        <nav class="navigation-cont">
+          <a href="{% url 'home' %}" class="links-banner-specifications">home</a>
+          <a href="{% url 'instructions' %}" class="links-banner-specifications">instructions</a>
+          <a href="{% url 'chat' %}" class="links-banner-specifications">rooms</a>
+        </nav>
+      </div>
+      <div class="container mt-3 p-5">
+        <div class="row">
+          <div class="col-12 col-md-8">
+            <div class="mb-2">
+              <label for="roomInput" style="color:azure">Enter a room name:</label>
+              <input type="text" class="form-control" id="roomInput" placeholder="Room name">
+              <small id="roomInputHelp" class="form-text" style="color: azure;">If the room doesn't exist, it will be created.</small>
 
-        <script src="{% static 'roomselection.js' %}"></script>
+              <label for="nameInput" style="color:azure">Enter your username for the game:</label>
+              <input type="text" class="form-control" id="nameInput" placeholder="User name">
+            </div>
+            <button type="button" id="roomConnect" class="btn btn-success" style="background-color:white; color: black;">Connect</button>
+          </div>
+          <div class="col-12 col-md-4">
+            <label for="roomSelect" style="color:azure">Active rooms</label>
+              <select multiple class="form-control" id="roomSelect">
+                {% for room in rooms %}
+                  <option>{{ room }}</option>
+                {% endfor %}
+              </select>
+          </div>
+        </div>
+      </div>
+
+      <script src="{% static 'roomselection.js' %}"></script>
     </body>
 </html>

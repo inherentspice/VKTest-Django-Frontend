@@ -17,7 +17,9 @@ def room_view(request, room_name, user_name, role):
         chat_room = Room.objects.get(name=room_name)
     else:
         question_url = "https://vktest-kr575za6oa-uw.a.run.app/question"
-        question_response = requests.get(question_url).json()['question']
+        # create error handling for request
+        # question_response = requests.get(question_url).json()['question']
+        question_response = "You wake up with the net worth of Jeff Bezos, what do you do?"
         chat_room = Room.objects.create(name=room_name, question=question_response)
 
     if role % 2 == 0:
