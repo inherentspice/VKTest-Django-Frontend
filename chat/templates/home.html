@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
         <link rel="shortcut icon" type="image/jpg" href="{% static 'images/favicon.jpg.ico' %}"/>
     </head>
-    <body>
+    <body class="home">
       <div class="banner-cont">
         <div class="banner-title">
           <h1>Voight-Kampff Test</h1>
@@ -22,18 +22,15 @@
       <div class="home-instructions-cont">
         <div class="introductions-div">
           <p class="introductions-text">
-            Voight-Kampff Test is a game of social detection.<br>
+            Voight-Kampff Test is a game of social detection.
             Players are assigned a role: human or AI.
-            <br>
             Humans answer questions and try to root out party members that aren't human.
-            <br>
             AI have their answers written by an AI, and must convince the others they wrote the answer.
-            <br>
           </p>
         </div>
-        <div>
-          <button class="introduction-button-1" type="button" id="toChat"><b>Play</b></button><br>
-          <button class="introduction-button-2" type="button" id="toInstructions"><b>Further Instructions</b></button><br>
+        <div class="home-button-cont">
+          <button class="introduction-button-1 home-button" type="button" id="toChat">Play</button>
+          <button class="introduction-button-2 home-button" type="button" id="toInstructions">Instructions</button><br>
         </div>
       </div>
 
