@@ -8,81 +8,71 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-        {% load static %} <link rel="shortcut icon" type="image/jpg" href="{% static 'images/favicon.jpg.ico' %}"/>
+        <link rel="shortcut icon" type="image/jpg" href="{% static 'images/favicon.jpg.ico' %}"/>
 
         <style>
             #chatLog {
                 height: 300px;
-                background-color: #FFFFFF;
-                resize: none;
+                background-color: black;
+                color:  rgb(39, 241, 174);
             }
 
             #onlineUsersSelector {
                 height: 300px;
+                background-color: black;
+                color: rgb(39, 241, 174);
             }
         </style>
     </head>
-    <body style="margin:0; padding:0; color:black; background-color: black;">
-      <div class="div-banner">
-        <h1 class="heading-banner">Voight-Kampff Test</h1>
-        <p class="links-banner">
-          <a href="{% url 'home' %}" class="links-banner-specifications">home</li>
-          <a href="{% url 'instructions' %}" target="_blank" class="links-banner-specifications">instructions</li>
-          <a href="{% url 'chat' %}" class="links-banner-specifications">rooms</li></a>
-        </p>
-      </div>
-      <div class="break-container">
-        <div class="break-div"></div>
-        <div class="break-div"></div>
-        <div class="break-div"></div>
-        <div class="break-div"></div>
-        <div class="break-div"></div>
-      </div>
+    <!-- conditionally render the class of the body to display a different background -->
+    {% if user.role == True %}
+      <body class="room ai">
+    {% else %}
+      <body class="room human">
+    {% endif %}
 
+      <div class="banner-cont">
+        <div class="banner-title">
+          <h1>Voight-Kampff Test</h1>
+        </div>
+        <nav class="navigation-cont">
+          <a href="{% url 'home' %}" class="links-banner-specifications">home</a>
+          <a href="{% url 'instructions' %}" class="links-banner-specifications">instructions</a>
+          <a href="{% url 'chat' %}" class="links-banner-specifications">rooms</a>
+        </nav>
+      </div>
+      <div class="question-div">
+        <h1 class="question-heading">QUESTION</h1>
+        <p class="question-text"><b>{{ room.question }}</b></p>
+        <div class="input-group-append">
+          <button type="button" class="question-button" id="nextQuestion"> Next Question</button>
+          <button type="button" class="results-button" id="getResults"> Finish Game</button>
+        </div>
+      </div>
       <div class="container mt-3 p-5">
-            <div class="row">
-                <div class="col-12 col-md-8">
-                    <div class="mb-2">
-                        <label for="chatLog" style="color:white"><b>Room:</b> {{ room.name }} <b>User:</b> {{ user.username }}</label>
-                        <textarea class="form-control" id="chatLog" readonly></textarea>
-                    </div>
-                    <div class="input-group">
-                      <input type="text" class="form-control" id="chatMessageInput" placeholder= "Write your answer here...">
-                        <div class="input-group-append">
-                            <button class="btn btn-success" id="chatMessageSend" type="button" style="background-color: white; color:black">Send</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-2">
-                    <label for="onlineUsers" style="color:white"><b>Players</b></label>
-                    <select multiple class="form-control" id="onlineUsersSelector">
-                    </select>
-                </div>
+        <div class="row">
+          <div class="col-12 col-md-8">
+            <div class="mb-2">
+              <label for="chatLog" style="color:white"><b>Room:</b> {{ room.name }} <b>User:</b> {{ user.username }}</label>
+              <textarea class="form-control" id="chatLog" readonly></textarea>
             </div>
-          <div class="role-div" style="position:fixed; left:0%; top: 30%; bottom: 0%; width: 100px; height: 100%; background-color:black">
-            {% if user.role == True %}
-              {% load static %} <img class="role-display" src="{% static 'images/ai_instructions.png' %}" style="height: 35%; float: left;" alt="">
-            {% else %}
-              {% load static %} <img class="role-display" src="{% static 'images/human_instructions.png' %}" style="height:35%; float: left" alt="">
-            {% endif %}
-
+            <div class="input-group">
+              <input type="text" class="form-control" id="chatMessageInput" placeholder= "Write your answer here...">
+              <div class="input-group-append">
+                <button class="btn btn-success" id="chatMessageSend" type="button" style="background-color: white; color:black">Send</button>
+              </div>
+            </div>
           </div>
-          <div class="question-div">
-            <h1 class="question-heading">QUESTION</h1>
-                <p class="question-text"><b>{{ room.question }}</b></p>
-                  <div class="input-group-append">
-                    <button type="button" class="question-button" id="nextQuestion"> Next Question</button>
-                    <button type="button" class="results-button" id="getResults"> Finish Game</button>
-                  </div>
-                <div>
-                </div>
-            </div>
+          <div class="col-12 col-md-2">
+            <label for="onlineUsers" style="color:white"><b>Players</b></label>
+            <select multiple class="form-control" id="onlineUsersSelector"></select>
+          </div>
+        </div>
+      </div>
             {{ room.name|json_script:"roomName" }}
             {{ user.username|json_script:"userName" }}
             {{ user.role|json_script:"userRole"}}
             {{ room.question|json_script:"oldQuestion"}}
-
-        </div>
         <script src="{% static 'room.js' %}"></script>
     </body>
 </html>
