@@ -57,6 +57,11 @@ body {
   width: 600px;
 }
 
+.introductions-text {
+  background-color: white;
+  font-size: 1.25rem;
+}
+
 .home-button {
   width: 150px;
   min-height: 100px;
@@ -201,13 +206,27 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-  .heading-banner {
+  .home {
+    background-position: left bottom;
+    background-size: 450px;
+  }
+
+  .banner-title {
     display: none;
   }
-  .links-banner {
-    font-size: 18px;
-    padding-left: 10px;
+
+  .banner-cont {
+    align-items: center;
   }
+
+  .home-instructions-cont {
+    margin: 1rem;
+  }
+
+  .introductions-div {
+    width: auto;
+  }
+
   .result-instructions {
     height: 100px;
     width: 50%;
@@ -244,17 +263,5 @@ body {
   .instructions-div {
     width: 85%;
     padding: 10px;
-  }
-
-  .introduction-button-1 {
-    top: 90%;
-    left: 15%;
-    transform: translate(-15%, -60%);
-  }
-
-  .introduction-button-2 {
-    top: 90%;
-    left: 80%;
-    transform: translate(-80%, -60%);
   }
 }
