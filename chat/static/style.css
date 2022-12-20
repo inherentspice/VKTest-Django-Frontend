@@ -177,16 +177,27 @@ body {
   opacity: 0.7;
 }
 
+/* results */
+
+.results {
+  background-image: url('./images/result-background.png');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 700px;
+}
 .result-instructions {
-  width: 20%;
-  background-color: black;
-  border: 5px solid white;
-  text-align: center;
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .result-heading {
   font-size: 30px;
+  background-color: black;
+  width: 20%;
   color: white;
+  padding: 1rem;
 }
 
 @media only screen and (max-width: 768px) {
