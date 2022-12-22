@@ -12,8 +12,28 @@
         {% load static %} <link rel="shortcut icon" type="image/jpg" href="{% static 'images/favicon.jpg.ico' %}"/>
 
         <style>
+            .form-control-sm {
+              font-size: 3rem;
+            }
+
+            .btn-success {
+              width: 200px;
+              font-size: 2.5rem;
+            }
+
+            #roomInput {
+              background-color: black;
+              color: rgb(39, 241, 174);
+            }
+
+            #nameInput {
+              background-color: black;
+              color:rgb(39, 241, 174);
+            }
+
             #roomSelect {
-                height: 300px;
+              background-color: black;
+              color: rgb(39, 241, 174);
             }
         </style>
     </head>
@@ -32,18 +52,16 @@
         <div class="row">
           <div class="col-12 col-md-8">
             <div class="mb-2">
-              <label for="roomInput" style="color:azure">Enter a room name:</label>
-              <input type="text" class="form-control" id="roomInput" placeholder="Room name">
-              <small id="roomInputHelp" class="form-text" style="color: azure;">If the room doesn't exist, it will be created.</small>
-
-              <label for="nameInput" style="color:azure">Enter your username for the game:</label>
-              <input type="text" class="form-control" id="nameInput" placeholder="User name">
+              <label for="roomInput">Enter a room name:</label>
+              <input type="text" class="form-control form-control-sm" id="roomInput" placeholder="Room name">
+              <label for="nameInput">Enter your username for the game:</label>
+              <input type="text" class="form-control form-control-sm" id="nameInput" placeholder="User name">
             </div>
             <button type="button" id="roomConnect" class="btn btn-success" style="background-color:white; color: black;">Connect</button>
           </div>
-          <div class="col-12 col-md-4">
-            <label for="roomSelect" style="color:azure">Active rooms</label>
-              <select multiple class="form-control" id="roomSelect">
+          <div class="col-12 col-md-10">
+            <label for="roomSelect">Active rooms</label>
+              <select multiple class="form-control form-control-sm" id="roomSelect">
                 {% for room in rooms %}
                   <option>{{ room }}</option>
                 {% endfor %}

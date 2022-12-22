@@ -111,7 +111,7 @@ body {
 .room-selection {
   background-image: url("./images/room-selection-background.png");
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: bottom right;
   background-size: 600px;
 }
 
@@ -205,7 +205,7 @@ body {
   padding: 1rem;
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .home {
     background-position: left bottom;
     background-size: 450px;
@@ -227,41 +227,17 @@ body {
     width: auto;
   }
 
-  .result-instructions {
-    height: 100px;
-    width: 50%;
-    left: 50%;
-    top: 20%;
-    transform: translate(-50%, -20%);
-    padding: 5px
-  }
-  .result-heading {
-    font-size: 18px;
-  }
-
-  .question-heading {
-    font-size: 20px;
-  }
-  .question-text {
-    font-size: 14px;
-  }
-  .results-button {
-    background-color:darkslategray;
-    color: white;
-    border: 4px solid grey;
-    padding: 20px;
-    font-size: 12px;
-  }
-  .question-button {
-    background-color: darkslategrey;
-    color: white;
-    border: 4px solid grey;
-    padding: 20px;
-    font-size: 12px;
-  }
-
   .instructions-div {
-    width: 85%;
-    padding: 10px;
+    margin: none;
+  }
+
+  .instructions-text {
+    width: auto;
+    line-height: 2rem;
+    background-color: white;
+  }
+
+  .result-heading {
+    width: auto;
   }
 }
